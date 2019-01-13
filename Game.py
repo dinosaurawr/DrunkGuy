@@ -22,11 +22,13 @@ class Game(object):
 
             print("{} победил, {} берет карты {} и {}".format(self.first_player.name, self.second_player.name, fpc, spc))
             self.second_player.take_cards(fpc, spc)
+            self.first_player.add_point()
 
         if spc > fpc:
 
             print("{} победил, {} берет карты {} и {}".format(self.second_player.name, self.first_player.name, fpc, spc))
             self.first_player.take_cards(fpc, spc)
+            self.second_player.add_point()
 
         if spc == fpc:
             print('одинаковые карты, следующий ход')
@@ -40,3 +42,5 @@ while resp == 'y':
     game.play_one_turn()
     print('{} карт в колоде у {} \n{} карт в колоде у {}'.format(len(game.first_player.deck.cards), game.first_player.name, len(game.second_player.deck.cards), game.second_player.name))
     resp = input("играть еще ход? y/n\n\n")
+
+print("игра окончена\n{} - {} очков\n{} - {} очков".format(game.first_player.name, game.first_player.get_points(), game.second_player.name, game.second_player.get_points()))
